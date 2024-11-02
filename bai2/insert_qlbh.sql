@@ -1,0 +1,57 @@
+﻿SET DATEFORMAT DMY 
+GO 
+INSERT INTO SANPHAM VALUES ('1', N'BẮP','Kg','10000' ,N'bap.png'),
+('2', N'CỦ CẢI','Kg','13000' ,N'cucai.png'),
+('3', N'CỦ SU ','Kg','11000' ,N'cusu.png'),
+('4', N'CÀ CHUA','Kg','18000' ,N'cachua.png'),
+('5', N'CÀ RỐT','Kg','20000' ,N'carot.png')
+GO
+
+SELECT* FROM SANPHAM 
+GO 
+
+INSERT INTO  NHANVIEN VALUES ('1' ,N'NGUYỄN', N'PHÚ','NAM','20/06/2021',N'Q.BÌNH THẠNH , TPHCM',N'0123456789',N'nv1.png'),
+('2' ,N'LÊ', N'HÙNG','NAM','21/02/2020',N'Q.1 , TPHCM',N'9876543216',N'nv2.png'),
+('3' ,N'NGUYỄN', N'HIỀN','NU','20/07/2021',N'Q.1 , TPHCM',N'2314765890',N'nv3.png'),
+('4' ,N'TRỊNH', N'ĐỨC','NAM','10/09/2019',N'Q.5 , TPHCM',N'0981237654',N'nv4.png'),
+('5' ,N'LÊ', N'NHÀN','NU','12/06/2021',N'Q.6 , TPHCM',N'0129837456',N'nv5.png')
+GO 
+SELECT * FROM NHANVIEN 
+GO 
+
+INSERT INTO THANHPHO VALUES ('1',N'SÀI GÒN'),
+('2',N'THỦ ĐỨC'),
+('3',N'BÌNH DƯƠNG'),
+('4',N'BIÊN HOÀ')
+GO
+SELECT * FROM THANHPHO 
+GO 
+
+INSERT INTO KHACHHANG VALUES ('1',N'Q.1 THHCM',N'CÔNG TY HOA QUẢ', '1',N'0487502345'),
+('2',N'PHƯỜNG HOÀ BÌNH , ĐƯỜNG VĂN TRỊ ',N'CÔNG TY NƯỚC ÉP TRÁI CÂY ', '4',N'0439659309'),
+('3',N'Q.BÌNH THẠNH  THHCM',N'CÔNG TY KEM TRÁI CÂY ', '1',N'0565673453'),
+('4',N'PHƯỜNG TÂN BA ĐƯỜNG THANH LONG ',N'CÔNG TY MINH KHA ', '3',N'0984549458'),
+('5',N'ĐƯỜNG NGUYỄN VĂN KHA ',N'CÔNG TY CÔ LOA', '2',N'0546434326')
+GO 
+SELECT * FROM KHACHHANG
+GO 
+
+INSERT INTO HOADON VALUES ('1','2','1','21/06/2023','23/06/2023'),
+('2','3','3','21/06/2023','23/06/2023'),
+('3','1','2','26/07/2023','29/07/2023'),
+('4','4','4','01/08/2023','05/08/2023'),
+('5','5','5','12/12/2023','16/12/2023'),
+('6','2','1','01/02/2023','05/02/2023')
+GO
+SELECT * FROM HOADON 
+GO 
+
+INSERT INTO CHITIETHD VALUES ('1','4',100),
+('2','1',2000),
+('3','4',50),
+('4','2',75),
+('5','5',100),
+('6','3',150)
+GO
+SELECT *FROM CHITIETHD 
+GO 

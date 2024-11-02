@@ -1,0 +1,143 @@
+﻿SELECT *FROM KHOA 
+GO 
+
+SELECT *FROM SINHVIEN
+GO 
+
+SELECT *FROM MONHOC 
+GO 
+
+SELECT *FROM KETQUA
+GO 
+
+-- 2.	Viết các Storeprocdure thực hiện thêm xóa sửa cho các bảng
+
+-- Khoa 
+
+CREATE PROC SP_THEMKHOA (@ma char (6) , @ten nvarchar (30))
+AS 
+ INSERT INTO KHOA VALUES (@ma , @ten)
+
+--EXEC SP_THEMKHOA 'TT', N'TRUYEN THONG'
+GO 
+CREATE PROC SP_XOAKHOA (@ma char(6))
+AS 
+ DELETE KHOA 
+ WHERE KHOA.MAKHOA = @ma 
+
+-- EXEC SP_XOAKHOA 'TT'
+ GO 
+
+ CREATE PROC SP_SUAKHOA (@ma char (6) , @ten nvarchar (30))
+ AS 
+   UPDATE KHOA 
+   SET TENKHOA = @ten 
+   WHERE MAKHOA = @ten 
+
+   -- EXEC SP_SUAKHOA 'TT', N'THONG TIN'
+   GO
+   
+-- SINH VIEN 
+--MASV char(6) primary key , 
+	
+CREATE PROC SP_THEMSV (@MASV char(6) ,@HOSV nvarchar (30) ,
+	@TenSV nvarchar(15) ,
+	@GIOITINH char(3), 
+	@NGAYSINH Date, 
+	@NOISINH nvarchar(50), 
+	@DIACHI	 NVARCHAR(50),
+	@Quan nvarchar(10), 
+	@MAKHOA char(6),
+	@HOCBONG int)
+
+	AS 
+	 INSERT INTO SINHVIEN VALUES (@MASV ,@HOSV , @TenSV , @GIOITINH , @NGAYSINH ,@NOISINH , @DIACHI ,@Quan ,@MAKHOA , @HOCBONG)
+
+	--EXEC SP_THEMSV 'B05',N'Trần Cá', N'Thu', 'Nu','01/02/87',N'Saigon', N'45 Nguyễn Thái Sơn', 'BC','TH',''
+	go 
+
+CREATE PROC SP_XOASV (@MASV char (6))
+AS 
+DELETE SINHVIEN WHERE MASV = @MASV 
+GO 
+--EXEC SP_XOASV 'B05'
+GO 
+
+CREATE PROC SP_SUASV (@MASV char(6) ,@HOSV nvarchar (30) ,
+	@TenSV nvarchar(15) ,
+	@GIOITINH char(3), 
+	@NGAYSINH Date, 
+	@NOISINH nvarchar(50), 
+	@DIACHI	 NVARCHAR(50),
+	@Quan nvarchar(10), 
+	@MAKHOA char(6),
+	@HOCBONG int)
+	AS 
+	UPDATE SINHVIEN 
+	SET HOSV = @HOSV ,
+	     TenSV = @TenSV ,
+		 GIOITINH = @GIOITINH ,
+		 DIACHI =@DIACHI , 
+		 NOISINH = @NOISINH ,
+		 NGAYSINH = @NGAYSINH ,
+		 Quan = @Quan , 
+		 MAKHOA = @MAKHOA 
+		 , HOCBONG = @HOCBONG 
+		 WHERE MASV = @MASV 
+
+--EXEC SP_SUASV 'B05',N'Trần Cá', N'Hoi', 'Nu','01/02/97',N'Saigon', N'45 Nguyễn Dia phu ', 'BC','TH',''
+go 
+
+-- KET QUA 
+CREATE PROC SP_THEMKETQUA (@MASV CHAR (6) , @MAMH CHAR (6) , @DIEM  INT )
+AS 
+INSERT INTO KETQUA VALUES (@MASV,@MAMH,@DIEM) ;
+
+--EXEC SP_THEMKETQUA 'B05','01',2 
+GO 
+
+ CREATE PROC SP_XOAKETQUA (@MASV CHAR (6) ,@MAMH CHAR (6))
+ AS 
+ DELETE KETQUA WHERE MASV = @MASV AND MAMH = @MAMH 
+
+ --EXEC SP_XOAKETQUA 'B05' ,'01'
+ GO 
+
+ CREATE PROC SP_SUAKETQUA  (@MASV CHAR (6) ,@MAMH CHAR (6) , @DIEM INT )
+
+ AS
+  UPDATE KETQUA 
+  SET DIEMTHI = @DIEM 
+  WHERE MASV = @MASV AND MAMH = @MAMH
+
+  -- EXEC SP_SUAKETQUA 'B05','01',10
+  GO
+
+  -- MON HOC 
+  CREATE PROC SP_THEMMH (@MAMH char(6) ,
+	@TENMH nvarchar(50) ,
+	@SOTIET int)
+	AS
+	INSERT INTO MONHOC VALUES (@MAMH ,@TENMH , @SOTIET)
+
+	--EXEC SP_THEMMH '11', N' kiem thu ', 75
+	GO 
+
+  CREATE PROC SP_XOAMH (@MAMH char(6))
+  AS 
+  DELETE MONHOC WHERE MAMH = @MAMH 
+
+ -- EXEC SP_XOAMH '11'
+ go 
+
+ CREATE PROC SP_SUAMH (@MAMH char(6) ,
+	@TENMH nvarchar(50) ,
+	@SOTIET int)
+	AS 
+	UPDATE MONHOC 
+	SET
+	 TENMH = @TENMH 
+	,SOTIET = @SOTIET
+	WHERE MAMH = @MAMH 
+	--EXEC SP_SUAMH '11', N' kiem thu phan men ', 85
+	go 
